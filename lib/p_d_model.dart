@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PDiaryEntriesModel {
+  bool? info;
   int? whichClass;
   String? homeWork;
   int? chapterNo;
@@ -12,7 +13,8 @@ class PDiaryEntriesModel {
   IconData? dateInfoIcone;
   String? date;
   PDiaryEntriesModel(
-      {this.assignGivenLead,this.homeWork,
+      {this.assignGivenLead,this.info,
+      this.homeWork,
       this.containerC,
       this.assignGivenTral,
       this.chapterNo,

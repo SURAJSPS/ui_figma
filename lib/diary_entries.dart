@@ -14,116 +14,136 @@ class DiaryEntrues extends StatefulWidget {
 class _DiaryEntruesState extends State<DiaryEntrues> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 7.99),
-      child: Container(
-        height: 65,
-        width: 327,
-        child: Card(
-          color: Color(0xFFBFCFE0),
-          shape: RoundedRectangleBorder(
+      child: FittedBox(
+        child: Container(
+          decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
+            color: Color(0xFFBFCFE0),
           ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "${widget.diaryEntriesModel!.subjectName}",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: MyColor.primary,
+          height: 65,
+          width: size.width,
+          child: Stack(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  SizedBox(
+                    height: 16,
                   ),
-                ),
-                SizedBox(
-                  height: 8,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      // width: size.width / 1.2,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Lesson ',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: MyColor.primary,
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 16,
+                      ),
+                      Text(
+                        "${widget.diaryEntriesModel!.subjectName}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 15,
+                          color: MyColor.primary,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 16,
+                      ),
+                      Container(
+                        height: 14,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Lesson ',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: MyColor.primary,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "${widget.diaryEntriesModel!.lessonNumber}",
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: MyColor.primary,
+                            Text(
+                              "${widget.diaryEntriesModel!.lessonNumber}",
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: MyColor.primary,
+                              ),
                             ),
-                          ),
-                          Text(
-                            ": ",
-                            style: TextStyle(),
-                          ),
-                          Text(
-                            "${widget.diaryEntriesModel!.lessonName}",
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: MyColor.primary,
+                            Text(
+                              ": ",
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
                             ),
-                          ),
-                          SizedBox(
-                            width: 24,
-                          ),
-                          (widget.diaryEntriesModel!.homeWork == true)
-                              ? Row(
-                                  children: [
-                                    Image.asset(
-                                      'assets/icons/book.png',
-                                      height: 10,
-                                      width: 10,
-                                    ),
-                                    SizedBox(
-                                      width: 4,
-                                    ),
-                                    Text(
-                                      "Assignment",
+                            Text(
+                              "${widget.diaryEntriesModel!.lessonName}",
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: MyColor.primary,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      (widget.diaryEntriesModel!.homeWork == true)
+                          ? Container(
+                              child: Row(
+                                children: [
+                                  SizedBox(
+                                    width: 24,
+                                  ),
+                                  Image.asset(
+                                    'assets/icons/book.png',
+                                    height: 10,
+                                    width: 10,
+                                  ),
+                                  SizedBox(
+                                    width: 4,
+                                  ),
+                                  Container(
+                                    height: 10,
+                                    width: 54,
+                                    child: Text(
+                                      "Homework",
                                       style: TextStyle(
-                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 10,
                                         color: MyColor.primary,
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: 4,
-                                    ),
-                                    Image.asset(
-                                      'assets/icons/done.png',
-                                      height: 10,
-                                      width: 10,
-                                    ),
-                                  ],
-                                )
-                              : SizedBox()
-                        ],
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Image.asset(
-                          'assets/icons/for.png',
-                          height: 8,
-                          width: 4,
-                        ),
-                        SizedBox(
-                          width: 7,
-                        )
-                      ],
-                    )
-                  ],
+                                  ),
+                                  SizedBox(
+                                    width: 7,
+                                  ),
+                                  Image.asset(
+                                    'assets/icons/done.png',
+                                    height: 10,
+                                    width: 10,
+                                  ),
+                                ],
+                              ),
+                            )
+                          : SizedBox(),
+                    ],
+                  ),
+                ],
+              ),
+              Positioned(
+                right: 16.1,
+                bottom: 16.1,
+                child: Image.asset(
+                  'assets/icons/for.png',
+                  height: 8,
+                  width: 4,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

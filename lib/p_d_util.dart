@@ -4,8 +4,9 @@ import 'package:ui_figma/p_d_model.dart';
 class PDiaryData {
   static List<PDiaryEntriesModel> pdiaryEntries = [
     PDiaryEntriesModel(
+      info: false,
       homeWork: 'Homework',
-      containerC: Colors.blue[900],
+      containerC: Color(0xFF0B6FE4),
       assignGivenLead: Icons.edit,
       homeworkLead: Icons.chrome_reader_mode_outlined,
       chapterNo: 12,
@@ -14,7 +15,8 @@ class PDiaryData {
       homeworkTral: Icons.done,
     ),
     PDiaryEntriesModel(
-        containerC: Colors.amber[900],
+        info: true,
+        containerC: Color(0xFFFF8133),
         assignGivenLead: Icons.edit,
         assignGivenTral: Icons.done,
         chapterNo: 8,
@@ -22,8 +24,9 @@ class PDiaryData {
         whichClass: 9,
         dateInfoIcone: Icons.info),
     PDiaryEntriesModel(
+      info: false,
       homeWork: 'Homework',
-      containerC: Colors.blue[900],
+      containerC: Color(0xFF0B6FE4),
       assignGivenLead: Icons.edit,
       assignGivenTral: Icons.done,
       homeworkLead: Icons.chrome_reader_mode_outlined,

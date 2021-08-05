@@ -16,112 +16,106 @@ class MyHome extends StatefulWidget {
 class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: MyColor.background,
-      appBar: AppBar(
-        elevation: 0,
-        leading: Image.asset(
-          'assets/icons/1.png',
-          height: 16,
-          width: 16,
-          color: MyColor.primary,
-        ),
-        title: Text(
-          'Class Diray',
-          style: TextStyle(
-              fontWeight: FontWeight.w500,
-              color: MyColor.primary,
-              fontSize: 22),
-        ),
-        actions: [
-          Row(
-            children: [
-              Image.asset(
-                'assets/icons/me.png',
-                height: 24,
-                width: 24,
-                color: MyColor.primary,
-              ),
-              SizedBox(
-                width: 16,
-              )
-            ],
-          ),
-        ],
-      ),
       body: SingleChildScrollView(
         physics: ScrollPhysics(),
         child: Column(
           children: <Widget>[
+            SizedBox(
+              height: 63,
+            ),
+            getAppBar(),
+            SizedBox(
+              height: 16,
+            ),
             Divider(
               color: Color(0xFF3D5066).withOpacity(.3),
             ),
             SizedBox(
               height: 32,
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        "Today's Diary Entries",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            fontSize: 20,
-                            color: MyColor.primary),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24),
+              child: Container(
+                width: size.width,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    FittedBox(
+                      child: Row(
+                        children: [
+                          Text(
+                            "Today's Diary Entries",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 20,
+                                color: MyColor.primary),
+                          ),
+                          SizedBox(
+                            width: 27,
+                          ),
+                          Text(
+                            '15th May,2020',
+                            style:
+                                TextStyle(fontSize: 12, color: Color(0xFF7D96B2)),
+                            textAlign: TextAlign.left,
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                        width: 27,
-                      ),
-                      Text(
-                        '15th May,2020',
-                        style:
-                            TextStyle(fontSize: 12, color: Color(0xFF7D96B2)),
-                        textAlign: TextAlign.left,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      style: TextStyle(color: MyColor.primary),
-                      children: [
-                        TextSpan(
-                          text: '8 ',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500, fontSize: 12),
-                        ),
-                        TextSpan(
-                          text: 'Class,',
-                        ),
-                        TextSpan(
-                          text: '6',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500, fontSize: 12),
-                        ),
-                        TextSpan(
-                          text: ' Chapters',
-                          style: TextStyle(fontSize: 12),
-                        ),
-                      ],
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      height: 5,
+                    ),
+                    RichText(
+                      text: TextSpan(
+                        style: TextStyle(),
+                        children: [
+                          TextSpan(
+                            text: '8 ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12,
+                              color: MyColor.primary,
+                            ),
+                          ),
+                          TextSpan(
+                            text: 'Class,',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: MyColor.primary,
+                            ),
+                          ),
+                          TextSpan(
+                            text: ' 6 ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12,
+                              color: MyColor.primary,
+                            ),
+                          ),
+                          TextSpan(
+                            text: 'Chapters',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              color: MyColor.primary,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             SizedBox(
               height: 24,
             ),
             Selected(),
-            SizedBox(
-              height: 8,
-            ),
             ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
@@ -131,6 +125,9 @@ class _MyHomeState extends State<MyHome> {
                     diaryEntriesModel: DiaryData.diaryEntries[index],
                   );
                 }),
+            SizedBox(
+              height: 35,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Row(
@@ -152,7 +149,7 @@ class _MyHomeState extends State<MyHome> {
               ),
             ),
             SizedBox(
-              height: 26,
+              height: 10,
             ),
             ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
@@ -167,6 +164,48 @@ class _MyHomeState extends State<MyHome> {
       ),
     );
   }
+}
+
+// AppBar
+Widget getAppBar() {
+  return FittedBox(
+    child: Container(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Image.asset(
+            'assets/icons/1.png',
+            height: 16,
+            width: 16,
+            color: MyColor.primary,
+          ),
+          SizedBox(
+            width: 90,
+          ),
+          Container(
+            width: 123,
+            child: Text(
+              'Class Diray',
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  color: MyColor.primary,
+                  fontSize: 22),
+            ),
+          ),
+          SizedBox(
+            width: 86,
+          ),
+          Image.asset(
+            'assets/icons/me.png',
+            height: 24,
+            width: 24,
+            color: MyColor.primary,
+          )
+        ],
+      ),
+    ),
+  );
 }
 
 // Widget getColumn(context) {

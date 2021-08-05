@@ -4,15 +4,6 @@ import 'package:ui_figma/d_model.dart';
 class DiaryData {
   static List<DiaryEntriesModel> diaryEntries = [
     DiaryEntriesModel(
-      assignGivenIcon: Icons.edit,
-      homeworkIcon: Icons.chrome_reader_mode_outlined,
-      lessonName: 'Integration',
-      lessonNumber: 17,
-      subjectName: 'Mathematics',
-      assignMent: true,
-      homeWork: true,
-    ),
-    DiaryEntriesModel(
         assignMent: false,
         homeWork: true,
         assignGivenIcon: Icons.edit,
